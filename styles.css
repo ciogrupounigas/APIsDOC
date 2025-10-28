@@ -1,41 +1,48 @@
-/* === Estilos generales === */
-body {
+/* RESET GENERAL */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f6fa;
-  color: #333;
-  display: flex;
-  height: 100vh;
+  padding: 0;
 }
 
-/* === Contenedor general === */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f5f7;
+  color: #1e293b;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+/* CONTENEDOR PRINCIPAL */
 .container {
   display: flex;
   width: 100%;
+  height: 100vh;
 }
 
-/* === Barra lateral === */
+/* SIDEBAR */
 .sidebar {
-  width: 250px;
-  background-color: #1e293b;
+  width: 260px;
+  background-color: #0f172a;
   color: #fff;
-  padding: 20px;
+  padding: 25px 20px;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  border-right: 1px solid #1e293b;
 }
 
 .sidebar h2 {
   font-size: 1.3em;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .sidebar nav ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .sidebar nav ul li {
@@ -45,58 +52,68 @@ body {
 .sidebar nav ul li a {
   color: #cbd5e1;
   text-decoration: none;
-  padding: 8px 10px;
   display: block;
-  border-radius: 4px;
-  transition: background 0.2s;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
-.sidebar nav ul li a:hover,
+.sidebar nav ul li a:hover {
+  background-color: #1e40af;
+  color: #fff;
+}
+
 .sidebar nav ul li a.active {
   background-color: #2563eb;
   color: #fff;
 }
 
-/* === Contenido principal === */
+/* CONTENIDO PRINCIPAL */
 .content {
   flex: 1;
-  padding: 40px;
+  padding: 40px 60px;
   overflow-y: auto;
+  height: 100vh;
+  background-color: #f9fafb;
 }
 
 #markdown-content {
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.7;
+  color: #1e293b;
+  font-size: 16px;
 }
 
 #markdown-content h1,
 #markdown-content h2,
 #markdown-content h3 {
-  color: #1e293b;
+  color: #0f172a;
+  margin-top: 25px;
 }
 
 #markdown-content code {
   background-color: #e2e8f0;
-  padding: 3px 6px;
+  padding: 3px 5px;
   border-radius: 4px;
   font-family: monospace;
 }
 
 #markdown-content pre {
-  background-color: #0f172a;
-  color: #f8fafc;
-  padding: 15px;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 12px;
   border-radius: 6px;
   overflow-x: auto;
 }
 
-/* === Paginación === */
+/* PAGINACIÓN */
 .pagination {
   display: flex;
   justify-content: space-between;
   max-width: 900px;
-  margin: 40px auto 0;
+  margin: 40px auto 60px;
 }
 
 .pagination button {
@@ -104,13 +121,24 @@ body {
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: background-color 0.2s;
 }
 
 .pagination button:hover {
   background-color: #1d4ed8;
 }
 
+/* SCROLL PERSONALIZADO */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: #2563eb60;
+  border-radius: 5px;
+}
+.content::-webkit-scrollbar-thumb:hover {
+  background-color: #2563eb;
+}
