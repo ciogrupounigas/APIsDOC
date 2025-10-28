@@ -2,11 +2,13 @@ const links = document.querySelectorAll(".sidebar nav ul li a");
 const content = document.getElementById("markdown-content");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
+const themeToggle = document.getElementById("theme-toggle");
+const hljsTheme = document.getElementById("hljs-theme");
 
 const files = Array.from(links).map(link => link.dataset.file);
 let currentIndex = 0;
 
-// Cargar Markdown con Highlight.js
+// Cargar Markdown y aplicar Highlight.js
 async function loadMarkdown(file) {
   try {
     const response = await fetch(file);
@@ -20,7 +22,13 @@ async function loadMarkdown(file) {
   }
 }
 
-// Manejar clicks en el sidebar
+// Cambiar enlace activo
+function updateActiveLink() {
+  links.forEach(link => link.classList.remove("active"));
+  links[currentIndex].classList.add("active");
+}
+
+// Eventos de sidebar
 links.forEach((link, index) => {
   link.addEventListener("click", e => {
     e.preventDefault();
@@ -30,7 +38,7 @@ links.forEach((link, index) => {
   });
 });
 
-// Botones de paginación
+// Paginación
 prevBtn.addEventListener("click", () => {
   if (currentIndex > 0) {
     currentIndex--;
@@ -47,11 +55,30 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-// Actualizar el estado visual de los enlaces
-function updateActiveLink() {
-  links.forEach(link => link.classList.remove("active"));
-  links[currentIndex].classList.add("active");
+// ======== Cambio de tema ========
+themeToggle.addEventListener("click", () => {
+  const body = document.body;
+  const isDark = body.classList.toggle("dark");
+
+  // Cambiar ícono
+  themeToggle.textContent = isDark ? "☀️" : "🌙";
+
+  // Cambiar tema de Highlight.js
+  hljsTheme.href = isDark
+    ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css"
+    : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css";
+
+  // Guardar preferencia
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+// Cargar tema guardado
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+  themeToggle.textContent = "☀️";
+  hljsTheme.href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css";
 }
 
-// Cargar la primera sección al inicio
+// Cargar primera sección
 loadMarkdown(files[0]);
