@@ -129,3 +129,22 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #64748b;
 }
+
+
+/* ===== Evitar que el texto desaparezca al seleccionarlo ===== */
+::selection {
+  background: #2563eb;   /* Azul visible */
+  color: #ffffff;         /* Texto blanco */
+}
+
+#markdown-content pre::selection,
+#markdown-content code::selection {
+  background: #2563eb;   /* Mantener coherencia en bloques */
+  color: #ffffff;
+}
+
+#markdown-content pre code::selection {
+  background: #2563eb;
+  color: #ffffff;
+}
+
