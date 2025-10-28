@@ -3,44 +3,136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentación de API</title>
+  <title>Documentación API</title>
+
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Highlight.js (tema oscuro por defecto) -->
-  <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+  <link id="hljs-theme" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Sidebar -->
+  <div class="layout">
+
+    <!-- Sidebar izquierda -->
     <aside class="sidebar">
       <div class="sidebar-header">
-        <h2>📘 API Docs</h2>
+        <h2>📘 Documentación APIS</h2>
         <button id="theme-toggle" title="Cambiar tema">🌙</button>
       </div>
-      <nav>
+
+      <div class="section">
+        <p class="section-title">🚀 EMISIÓN</p>
         <ul>
-          <li><a href="#" data-file="introduccion.md" class="active">Introducción</a></li>
-          <li><a href="#" data-file="autenticacion.md">Autenticación</a></li>
-          <li><a href="#" data-file="endpoints.md">Endpoints</a></li>
-          <li><a href="#" data-file="ejemplos.md">Ejemplos</a></li>
+          <li class="collapsible">
+            <span>Facturación Electrónica</span>
+            <ul class="nested">
+              <li>Configuración API</li>
+              <li>Factura
+                <ul class="nested">
+                  <li>Factura simple</li>
+                </ul>
+              </li>
+              <li>Boleta</li>
+              <li>Nota de crédito</li>
+              <li>Nota de débito</li>
+              <li>Anular comprobante</li>
+              <li>Consultar estado</li>
+            </ul>
+          </li>
         </ul>
-      </nav>
+      </div>
+
+      <div class="section">
+        <p class="section-title">📊 CONSULTAS</p>
+        <ul>
+          <li class="collapsible">
+            <span>Reportes SUNAT</span>
+            <ul class="nested">
+              <li><a href="#" data-file="reporte_compras.md">Reporte de Compras</a></li>
+              <li><a href="#" data-file="reporte_ventas.md">Reporte de Ventas</a></li>
+            </ul>
+          </li>
+          <li>Consulta RUC</li>
+          <li>Consulta Factura</li>
+        </ul>
+      </div>
+
+      <div class="section bottom">
+        <p>🧩 Otros Servicios</p>
+        <button class="gitbook-btn">Con tecnología de GitBook</button>
+      </div>
     </aside>
 
-    <!-- Contenido principal -->
+    <!-- Contenido central -->
     <main class="content">
-      <article id="markdown-content">Cargando documentación...</article>
+      <h1>Documentación API</h1>
 
-      <!-- Paginación -->
-      <div class="pagination">
-        <button id="prev-btn">← Anterior</button>
-        <button id="next-btn">Siguiente →</button>
-      </div>
+      <section id="markdown-content">
+        <h2>1️⃣ Solicitar reporte</h2>
+        <p>Usa el siguiente endpoint para solicitar un reporte:</p>
+
+        <div class="endpoint">
+          <span class="method post">POST</span>
+          <code>https://api.tuapi.com/v1/request-purchases</code>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-btn" data-tooltip="Copiar">📋</button>
+          <pre><code class="json">{
+  "periodo_anio": "2024",
+  "periodo_mes": "11"
+}</code></pre>
+        </div>
+
+        <div class="response">
+          <button class="tab active">200 OK</button>
+          <button class="tab">400 Bad Request</button>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-btn" data-tooltip="Copiar">📋</button>
+          <pre><code class="json">{
+  "success": false,
+  "message": "Error al solicitar reporte"
+}</code></pre>
+        </div>
+
+        <h2>2️⃣ Descargar reporte</h2>
+
+        <div class="endpoint">
+          <span class="method get">GET</span>
+          <code>https://api.tuapi.com/v1/download-report/{ticket}</code>
+        </div>
+
+        <div class="code-block">
+          <button class="copy-btn" data-tooltip="Copiar">📋</button>
+          <pre><code class="json">{
+  "success": true,
+  "message": "Reporte descargado correctamente",
+  "payload": []
+}</code></pre>
+        </div>
+      </section>
     </main>
+
+    <!-- Índice lateral derecho -->
+    <aside class="toc">
+      <h3>Índice</h3>
+      <ul>
+        <li><a href="#solicitar">Solicitar reporte</a></li>
+        <li><a href="#descargar">Descargar reporte</a></li>
+      </ul>
+
+      <div class="feedback">
+        <p>¿Te fue útil?</p>
+        <div class="reactions">
+          <button>😊</button><button>😐</button><button>😞</button>
+        </div>
+      </div>
+    </aside>
   </div>
 
-  <!-- Librerías -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   <script src="scripts.js"></script>
 </body>
