@@ -6,14 +6,17 @@
   <title>Documentación de API</title>
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Highlight.js para resaltar código -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+  <!-- Highlight.js (tema oscuro por defecto) -->
+  <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
 </head>
 <body>
   <div class="container">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <h2>📘 API Docs</h2>
+      <div class="sidebar-header">
+        <h2>📘 API Docs</h2>
+        <button id="theme-toggle" title="Cambiar tema">🌙</button>
+      </div>
       <nav>
         <ul>
           <li><a href="#" data-file="introduccion.md" class="active">Introducción</a></li>
@@ -39,8 +42,6 @@
   <!-- Librerías -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-
-  <!-- Script principal -->
   <script src="scripts.js"></script>
 </body>
 </html>
