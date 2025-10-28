@@ -6,6 +6,7 @@ body {
   height: 100vh;
   background-color: #f6f7f9;
   color: #1e293b;
+  transition: background 0.3s, color 0.3s;
 }
 
 .container {
@@ -20,6 +21,26 @@ body {
   color: #f1f5f9;
   padding: 2rem 1.5rem;
   box-shadow: 2px 0 6px rgba(0,0,0,0.2);
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  color: #f1f5f9;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#theme-toggle:hover {
+  transform: rotate(20deg);
 }
 
 .sidebar h2 {
@@ -27,8 +48,6 @@ body {
   margin-bottom: 1rem;
   border-bottom: 1px solid #1e293b;
   padding-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
 }
 
 .sidebar nav ul {
@@ -65,6 +84,7 @@ body {
   padding: 2rem 3rem;
   background-color: #f8fafc;
   overflow-y: auto;
+  transition: background 0.3s, color 0.3s;
 }
 
 #markdown-content {
@@ -96,11 +116,11 @@ body {
 
 /* ===== Markdown: títulos ===== */
 #markdown-content h1, #markdown-content h2, #markdown-content h3 {
-  color: #0f172a;
+  color: inherit;
   margin-top: 1.5rem;
 }
 
-/* ===== Markdown: bloques de código ===== */
+/* ===== Bloques de código ===== */
 #markdown-content pre {
   background-color: #1e293b;
   padding: 15px;
@@ -130,21 +150,38 @@ body {
   background: #64748b;
 }
 
-
-/* ===== Evitar que el texto desaparezca al seleccionarlo ===== */
+/* ===== Selección de texto ===== */
 ::selection {
-  background: #2563eb;   /* Azul visible */
-  color: #ffffff;         /* Texto blanco */
-}
-
-#markdown-content pre::selection,
-#markdown-content code::selection {
-  background: #2563eb;   /* Mantener coherencia en bloques */
+  background: #2563eb;
   color: #ffffff;
 }
-
-#markdown-content pre code::selection {
+#markdown-content pre::selection,
+#markdown-content code::selection {
   background: #2563eb;
   color: #ffffff;
 }
 
+/* ===== MODO OSCURO ===== */
+body.dark {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+body.dark .sidebar {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark .content {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+body.dark #markdown-content pre {
+  background-color: #0b1120;
+}
+
+body.dark #markdown-content code {
+  background-color: rgba(30, 41, 59, 0.9);
+  color: #e2e8f0;
+}
