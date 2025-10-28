@@ -1,40 +1,57 @@
 const links = document.querySelectorAll(".sidebar nav ul li a");
 const content = document.getElementById("markdown-content");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+
+const files = Array.from(links).map(link => link.dataset.file);
 let currentIndex = 0;
 
-// Función para cargar un archivo Markdown
+// Cargar Markdown con Highlight.js
 async function loadMarkdown(file) {
   try {
     const response = await fetch(file);
     if (!response.ok) throw new Error("No se pudo cargar el archivo");
     const text = await response.text();
+
     content.innerHTML = marked.parse(text);
+    document.querySelectorAll("pre code").forEach(block => hljs.highlightElement(block));
   } catch (err) {
     content.innerHTML = `<p style="color:red;">Error al cargar el contenido: ${err.message}</p>`;
   }
 }
 
-// Manejo de clics en los enlaces del sidebar
+// Manejar clicks en el sidebar
 links.forEach((link, index) => {
   link.addEventListener("click", e => {
     e.preventDefault();
-    links.forEach(l => l.classList.remove("active"));
-    link.classList.add("active");
     currentIndex = index;
-    loadMarkdown(link.getAttribute("data-file"));
+    updateActiveLink();
+    loadMarkdown(link.dataset.file);
   });
 });
 
 // Botones de paginación
-document.getElementById("prev-btn").addEventListener("click", () => {
-  if (currentIndex > 0) links[currentIndex - 1].click();
+prevBtn.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateActiveLink();
+    loadMarkdown(files[currentIndex]);
+  }
 });
 
-document.getElementById("next-btn").addEventListener("click", () => {
-  if (currentIndex < links.length - 1) links[currentIndex + 1].click();
+nextBtn.addEventListener("click", () => {
+  if (currentIndex < files.length - 1) {
+    currentIndex++;
+    updateActiveLink();
+    loadMarkdown(files[currentIndex]);
+  }
 });
 
-// Cargar la primera página al inicio
-window.addEventListener("DOMContentLoaded", () => {
-  links[0].click();
-});
+// Actualizar el estado visual de los enlaces
+function updateActiveLink() {
+  links.forEach(link => link.classList.remove("active"));
+  links[currentIndex].classList.add("active");
+}
+
+// Cargar la primera sección al inicio
+loadMarkdown(files[0]);
