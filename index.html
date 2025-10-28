@@ -3,29 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentación de API - Swagger Style</title>
+  <title>Documentación de API</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
 </head>
-<body class="dark-mode">
-  <header class="header">
-    <h1>📘 API Docs</h1>
-    <div class="header-controls">
-      <p>v1.0.0</p>
-      <button id="theme-toggle">🌙 Modo Oscuro</button>
-    </div>
-  </header>
-
+<body>
   <div class="container">
     <!-- Sidebar -->
     <aside class="sidebar">
-      <h2>Endpoints</h2>
+      <h2>📘 API Docs</h2>
       <nav>
         <ul>
-          <li><a href="#" data-file="docs/overview.md" class="active">🔹 Overview</a></li>
-          <li><a href="#" data-file="docs/authentication.md">🔑 Autenticación</a></li>
-          <li><a href="#" data-file="docs/datasets.md">📦 Datasets</a></li>
-          <li><a href="#" data-file="docs/examples.md">🧩 Ejemplos</a></li>
+          <li><a href="#" data-file="docs/introduccion.md" class="active">Introducción</a></li>
+          <li><a href="#" data-file="docs/autenticacion.md">Autenticación</a></li>
+          <li><a href="#" data-file="docs/endpoints.md">Endpoints</a></li>
+          <li><a href="#" data-file="docs/ejemplos.md">Ejemplos</a></li>
         </ul>
       </nav>
     </aside>
@@ -33,31 +24,6 @@
     <!-- Contenido principal -->
     <main class="content">
       <article id="markdown-content">Cargando documentación...</article>
-
-      <!-- Consola interactiva -->
-      <section id="api-console">
-        <h2>🔧 Probar Endpoint</h2>
-        <form id="api-form">
-          <label for="endpoint">Endpoint:</label>
-          <input type="text" id="endpoint" value="/catalog/dataset" placeholder="/catalog/dataset" required>
-
-          <label for="method">Método:</label>
-          <select id="method">
-            <option>GET</option>
-            <option>POST</option>
-          </select>
-
-          <label for="body">Body (JSON):</label>
-          <textarea id="body" placeholder='{"param":"valor"}'></textarea>
-
-          <button type="submit">Enviar solicitud</button>
-        </form>
-
-        <div id="response">
-          <h3>Respuesta:</h3>
-          <pre><code id="response-content">Esperando solicitud...</code></pre>
-        </div>
-      </section>
 
       <!-- Paginación -->
       <div class="pagination">
@@ -67,13 +33,7 @@
     </main>
   </div>
 
-  <footer class="footer">
-    <p>Documentación generada por Basdonax AI · © 2025</p>
-  </footer>
-
-  <!-- Librerías -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>
