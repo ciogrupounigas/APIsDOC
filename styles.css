@@ -1,48 +1,39 @@
-/* RESET GENERAL */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* ===== Estilos base ===== */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: #f4f5f7;
-  color: #1e293b;
-  height: 100vh;
-  overflow: hidden;
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
   display: flex;
+  height: 100vh;
+  background-color: #f6f7f9;
+  color: #1e293b;
 }
 
-/* CONTENEDOR PRINCIPAL */
 .container {
   display: flex;
   width: 100%;
-  height: 100vh;
 }
 
-/* SIDEBAR */
+/* ===== Sidebar ===== */
 .sidebar {
-  width: 260px;
+  width: 280px;
   background-color: #0f172a;
-  color: #fff;
-  padding: 25px 20px;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #1e293b;
+  color: #f1f5f9;
+  padding: 2rem 1.5rem;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.2);
 }
 
 .sidebar h2 {
-  font-size: 1.3em;
-  margin-bottom: 20px;
-  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 
 .sidebar nav ul {
   list-style: none;
+  padding: 0;
 }
 
 .sidebar nav ul li {
@@ -50,95 +41,91 @@ body {
 }
 
 .sidebar nav ul li a {
-  color: #cbd5e1;
-  text-decoration: none;
   display: block;
-  padding: 10px 14px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  font-weight: 500;
+  text-decoration: none;
+  color: #f1f5f9;
+  background: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
 .sidebar nav ul li a:hover {
-  background-color: #1e40af;
-  color: #fff;
+  background-color: #1e3a8a;
 }
 
 .sidebar nav ul li a.active {
   background-color: #2563eb;
-  color: #fff;
+  font-weight: 600;
 }
 
-/* CONTENIDO PRINCIPAL */
+/* ===== Contenido ===== */
 .content {
   flex: 1;
-  padding: 40px 60px;
+  padding: 2rem 3rem;
+  background-color: #f8fafc;
   overflow-y: auto;
-  height: 100vh;
-  background-color: #f9fafb;
 }
 
 #markdown-content {
   max-width: 900px;
-  margin: 0 auto;
   line-height: 1.7;
-  color: #1e293b;
-  font-size: 16px;
 }
 
-#markdown-content h1,
-#markdown-content h2,
-#markdown-content h3 {
-  color: #0f172a;
-  margin-top: 25px;
-}
-
-#markdown-content code {
-  background-color: #e2e8f0;
-  padding: 3px 5px;
-  border-radius: 4px;
-  font-family: monospace;
-}
-
-#markdown-content pre {
-  background-color: #1e293b;
-  color: #e2e8f0;
-  padding: 12px;
-  border-radius: 6px;
-  overflow-x: auto;
-}
-
-/* PAGINACIÓN */
+/* ===== Paginación ===== */
 .pagination {
   display: flex;
   justify-content: space-between;
-  max-width: 900px;
-  margin: 40px auto 60px;
+  margin-top: 2rem;
 }
 
 .pagination button {
   background-color: #2563eb;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 25px;
   border-radius: 6px;
-  cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .pagination button:hover {
   background-color: #1d4ed8;
 }
 
-/* SCROLL PERSONALIZADO */
-.content::-webkit-scrollbar {
+/* ===== Markdown: títulos ===== */
+#markdown-content h1, #markdown-content h2, #markdown-content h3 {
+  color: #0f172a;
+  margin-top: 1.5rem;
+}
+
+/* ===== Markdown: bloques de código ===== */
+#markdown-content pre {
+  background-color: #1e293b;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+#markdown-content code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95em;
+  background-color: rgba(30, 41, 59, 0.9);
+  color: #e2e8f0;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
   width: 8px;
 }
-.content::-webkit-scrollbar-thumb {
-  background-color: #2563eb60;
-  border-radius: 5px;
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 10px;
 }
-.content::-webkit-scrollbar-thumb:hover {
-  background-color: #2563eb;
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
